@@ -33,13 +33,13 @@ RUN wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor 
     && apt-get update \
     && apt-get install -y code
 
-# Configura SSH per a l'usuari agh
+# Configura SSH per a l'usuari rvm
 RUN mkdir -p /var/run/sshd \
     && sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin no/' /etc/ssh/sshd_config \
     && echo "AllowUsers rvm" >> /etc/ssh/sshd_config \
     && ssh-keygen -A
 
-# Configura VNC per a l'usuari agh
+# Configura VNC per a l'usuari rvm
 RUN mkdir -p /home/rvm/.vnc \
     && echo "$VNC_PASSWORD" | vncpasswd -f > /home/rvm/.vnc/passwd \
     && chmod 600 /home/rvm/.vnc/passwd \
