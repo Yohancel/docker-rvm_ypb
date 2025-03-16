@@ -9,6 +9,12 @@ El objetivo de este Dockerfile es crear una imagen basada en Ubuntu 24.04 que co
 
 Descargar los archivos del repositorio y ponerlos en un mismo directorio
 
-Ejecutar el Dockerfile asegurandose que el **xstartup** esté en el mismo directorio:
+Ejecutar el Dockerfile asegurandose que el **xstartup** esté en el mismo directorio, para crear la imagen:
 
 docker build -t "NOMBRE DE LA IMAGEN" ./Dockerfile
+
+una vez tengamos la imagen, para crear el contenedor ejecutamos el siguiente comando:
+
+docker run -d -p 2222:22 -p 5901:5901 "NOMBRE DE LA IMAGEN"
+
+Para conectarse a través de VNC  se deberá de utilizar un cliente VNC a través del puerto 5901.
